@@ -22,6 +22,8 @@ import HeaderContainer from "./HeaderContainer.vue";
   height: 100%;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  flex-shrink: 0;
   .main-container {
     width: 100%;
     flex: 1 1 auto;
