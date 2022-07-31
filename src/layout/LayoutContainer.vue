@@ -33,6 +33,8 @@ import HeaderContainer from "./HeaderContainer.vue";
     .main-content {
       flex: 1 1 auto;
       overflow-y: auto;
+      padding: 10px;
+      background-color: #f1f1f1;
     }
   }
 }
