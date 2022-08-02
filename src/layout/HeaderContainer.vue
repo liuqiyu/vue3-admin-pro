@@ -1,7 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="header-container">123</div>
+  <div class="header-container">
+    <div>
+      <el-button type="text" link>缩起</el-button>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
