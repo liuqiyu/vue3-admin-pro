@@ -1,31 +1,37 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import LayoutContainer from "../layout/LayoutContainer.vue";
+import LayoutContainer from "@/layout/LayoutContainer.vue";
+
+const routesContext: any = import.meta.glob("./*.ts", { eager: true });
+
+export let constantModules: any = [];
+Object.keys(routesContext).forEach((key) => {
+  constantModules = constantModules.concat(routesContext[key].default);
+});
+
+export const routes = [
+  {
+    path: "",
+    name: "LayoutContainer",
+    component: LayoutContainer,
+    children: [
+      {
+        path: "/home",
+        name: "home",
+        component: () => import("@/views/HomeView.vue"),
+      },
+    ],
+  },
+  ...constantModules,
+  // {
+  //   path: "/about",
+  //   name: "about",
+  //   component: () => import("../views/AboutView.vue"),
+  // },
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "",
-      name: "LayoutContainer",
-      component: LayoutContainer,
-      children: [
-        {
-          path: "/home",
-          name: "home",
-          component: HomeView,
-        },
-      ],
-    },
-    {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
-    },
-  ],
+  routes,
 });
 
 export default router;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SidebarLogo from "./SidebarLogo.vue";
-import SidebarMenu from "./SidebarMenu.vue";
+import SidebarMenu from "./nav-menu/Index.vue";
 </script>
 
 <template>
