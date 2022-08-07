@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import HelloWorld from "@/components/HelloWorld.vue";
+
 const tableData = [
   {
     date: "2016-05-03",
@@ -21,10 +23,12 @@ const tableData = [
     address: "No. 189, Grove St, Los Angeles",
   },
 ];
+const msg = "111111";
 </script>
 
 <template>
   <main>
+    <HelloWorld :msg="msg" />
     DashboardIndex
     <el-table :data="tableData" border style="width: 100%">
       <el-table-column prop="date" label="Date" width="180" />

@@ -8,6 +8,9 @@ export default [
       {
         path: "/dashboard",
         name: "dashboard",
+        meta: {
+          title: "仪表盘",
+        },
         component: () => import("@/views/dashboard/DashboardIndex.vue"),
       },
     ],

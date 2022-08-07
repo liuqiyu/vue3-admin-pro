@@ -8,6 +8,9 @@ export default [
       {
         path: "",
         name: "table",
+        meta: {
+          title: "表格",
+        },
         component: () => import("@/views/table/tableView.vue"),
       },
     ],

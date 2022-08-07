@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import NavMenuItem from "./NavMenuItem.vue";
+import { constantModules } from "@/router";
+console.log(constantModules);
 </script>
 
 <template>
@@ -12,7 +14,11 @@ import NavMenuItem from "./NavMenuItem.vue";
         default-active="2"
         text-color="#fff"
       >
-        <NavMenuItem />
+        <NavMenuItem
+          v-for="(route, key) in constantModules"
+          :route="route"
+          :key="key"
+        ></NavMenuItem>
       </el-menu>
     </el-scrollbar>
   </div>

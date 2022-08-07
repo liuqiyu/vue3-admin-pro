@@ -8,6 +8,9 @@ export default [
       {
         path: "",
         name: "tab",
+        meta: {
+          title: "标签页",
+        },
         component: () => import("@/views/tab/TabView.vue"),
       },
     ],
