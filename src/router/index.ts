@@ -7,6 +7,7 @@ export let constantModules: any = [];
 Object.keys(routesContext).forEach((key) => {
   constantModules = constantModules.concat(routesContext[key].default);
 });
+console.log(constantModules, 222333)
 
 export const routes = [
   {
