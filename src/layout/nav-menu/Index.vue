@@ -17,6 +17,7 @@ console.log(constantModules);
         <NavMenuItem
           v-for="(route, key) in constantModules"
           :route="route"
+          :base-path="route.path"
           :key="key"
         ></NavMenuItem>
       </el-menu>

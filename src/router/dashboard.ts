@@ -3,11 +3,11 @@ import LayoutContainer from "@/layout/LayoutContainer.vue";
 
 const DashboardRouter: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "/dashboard",
     component: LayoutContainer,
     children: [
       {
-        path: "/dashboard",
+        path: "",
         name: "dashboard",
         meta: {
           title: "仪表盘",
