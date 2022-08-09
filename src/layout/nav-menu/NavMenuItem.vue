@@ -1,54 +1,63 @@
-<script setup lang="ts">
-import { ref } from "vue";
+<script lang="ts">
+import { ref, defineComponent, type PropType } from "vue";
 // TODO path 使用报错
-// import path from "path";
-// import type { RouteRecordRaw } from "vue-router";
+import path from "path-browserify";
+import type { RouteRecordRaw } from "vue-router";
 import NavMenuLink from "./NavMenuLink.vue";
-// console.log(path);
-const props = defineProps<{
-  route: {
-    children: any;
-    path: any;
-    meta: any;
-  };
-  basePath: string;
-}>();
 
-// console.log(props.basePath, 11111111111222);
+export default defineComponent({
+  props: {
+    route: {
+      type: Object as PropType<RouteRecordRaw>,
+      required: true,
+    },
+    basePath: {
+      type: String,
+    },
+  },
+  components: {
+    NavMenuLink,
+  },
+  setup(props) {
+    const onlyOneChild: any = ref(null);
 
-const onlyOneChild: any = ref(null);
+    function hasOneShowingChild(children: any = [], parent: any): boolean {
+      const showingChidren = children.filter((item: any) => {
+        if (item.hidden) {
+          return false;
+        } else {
+          onlyOneChild.value = item;
+          return true;
+        }
+      });
 
-function hasOneShowingChild(children: any = [], parent: any): boolean {
-  const showingChidren = children.filter((item: any) => {
-    if (item.hidden) {
+      if (showingChidren.length === 1) {
+        return true;
+      }
+
+      if (showingChidren.length === 0) {
+        onlyOneChild.value = {
+          ...parent,
+          path: "",
+          noShowingChildren: true,
+        };
+        return true;
+      }
+
       return false;
-    } else {
-      onlyOneChild.value = item;
-      return true;
     }
-  });
 
-  if (showingChidren.length === 1) {
-    return true;
-  }
+    function resolvePath(routePath: string): string {
+      return path.resolve(props.basePath, routePath);
+    }
 
-  if (showingChidren.length === 0) {
-    onlyOneChild.value = {
-      ...parent,
-      path: "",
-      noShowingChildren: true,
+    return {
+      onlyOneChild,
+      hasOneShowingChild,
+      resolvePath,
     };
-    return true;
-  }
-
-  return false;
-}
-
-function resolvePath(routePath: string): string {
-  console.log(props.basePath, routePath, "a");
-  // return path.resolve(props.basePath, routePath);
-  return props.basePath + "/" + routePath;
-}
+  },
+});
 </script>
 
 <template>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import NavMenuItem from "./NavMenuItem.vue";
 import { constantModules } from "@/router";
-console.log(constantModules);
 </script>
 
 <template>
