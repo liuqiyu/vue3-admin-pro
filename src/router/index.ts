@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 import LayoutContainer from "@/layout/LayoutContainer.vue";
 
 const routesContext: any = import.meta.glob("./*.ts", { eager: true });
 
-export let constantModules: any = [];
+export let constantModules: Array<RouteRecordRaw> = [];
 Object.keys(routesContext).forEach((key) => {
   constantModules = constantModules.concat(routesContext[key].default);
 });
-console.log(constantModules, 222333)
 
-export const routes = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: "",
     name: "LayoutContainer",

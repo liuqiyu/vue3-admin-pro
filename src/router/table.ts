@@ -1,10 +1,11 @@
+import type { RouteRecordRaw } from "vue-router";
 import LayoutContainer from "@/layout/LayoutContainer.vue";
 
-export default [
+const TableRouter: Array<RouteRecordRaw> = [
   {
     path: "/table",
     meta: {
-        title: "表格",
+      title: "表格",
     },
     component: LayoutContainer,
     children: [
@@ -27,3 +28,5 @@ export default [
     ],
   },
 ];
+
+export default TableRouter;

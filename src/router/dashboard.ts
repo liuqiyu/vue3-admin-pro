@@ -1,6 +1,7 @@
+import type { RouteRecordRaw } from "vue-router";
 import LayoutContainer from "@/layout/LayoutContainer.vue";
 
-export default [
+const DashboardRouter: Array<RouteRecordRaw> = [
   {
     path: "/",
     component: LayoutContainer,
@@ -16,3 +17,5 @@ export default [
     ],
   },
 ];
+
+export default DashboardRouter;
