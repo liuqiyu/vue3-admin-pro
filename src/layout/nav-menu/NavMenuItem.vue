@@ -1,6 +1,5 @@
 <script lang="ts">
 import { ref, defineComponent, type PropType } from "vue";
-// TODO path 使用报错
 import path from "path-browserify";
 import type { RouteRecordRaw } from "vue-router";
 import NavMenuLink from "./NavMenuLink.vue";
@@ -19,9 +18,11 @@ export default defineComponent({
     NavMenuLink,
   },
   setup(props) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onlyOneChild: any = ref(null);
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function hasOneShowingChild(children: any = [], parent: any): boolean {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const showingChidren = children.filter((item: any) => {
         if (item.hidden) {
           return false;

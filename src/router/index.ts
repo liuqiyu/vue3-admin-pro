@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
 import LayoutContainer from "@/layout/LayoutContainer.vue";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const routesContext: any = import.meta.glob("./*.ts", { eager: true });
 
 export let constantModules: Array<RouteRecordRaw> = [];
@@ -10,18 +11,18 @@ Object.keys(routesContext).forEach((key) => {
 });
 
 export const routes: Array<RouteRecordRaw> = [
-  {
-    path: "",
-    name: "LayoutContainer",
-    component: LayoutContainer,
-    children: [
-      {
-        path: "/home",
-        name: "home",
-        component: () => import("@/views/HomeView.vue"),
-      },
-    ],
-  },
+  // {
+  //   path: "",
+  //   name: "LayoutContainer",
+  //   component: LayoutContainer,
+  //   children: [
+  //     {
+  //       path: "/home",
+  //       name: "home",
+  //       component: () => import("@/views/HomeView.vue"),
+  //     },
+  //   ],
+  // },
   ...constantModules,
   // {
   //   path: "/about",
